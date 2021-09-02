@@ -23,7 +23,25 @@ app.get("/todos", async (req, res) => {
   }
 });
 
+// Get a todo
 
+app.get("/todos/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const todo = await pool.query(
+      "SELECT description FROM todo WHERE todo_id = $1",
+      [id]
+    );
+    if (!todo.rows.length) {
+      return res.status(400).json({
+        msg: `ID: ${id} Not Found`,
+      });
+    }
+    res.json(todo.rows[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
