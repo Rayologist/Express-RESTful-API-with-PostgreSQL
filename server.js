@@ -61,15 +61,29 @@ app.post("/todos", async (req, res) => {
 // Update a todo
 
 app.put("/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params; // WHERE
+    const { description } = req.body; // SET
+
+    const updateTodo = await pool.query(
+      "UPDATE todo SET description = $1 WHERE todo_id = $2",
+      [description, id]
+    );
+    res.json({ msg: "Todo Updated" });
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+// Delete a todo
+
+app.delete("/todos/:id", async (req, res) => {
     try {
-      const { id } = req.params; // WHERE
-      const { description } = req.body; // SET
-  
-      const updateTodo = await pool.query(
-        "UPDATE todo SET description = $1 WHERE todo_id = $2",
-        [description, id]
-      );
-      res.json({ msg: "Todo Updated" });
+      const { id } = req.params;
+      const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
+        id,
+      ]);
+      res.json({msg: "Todo was deleted!"})
     } catch (error) {
       console.error(error.message);
     }
