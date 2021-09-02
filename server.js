@@ -78,16 +78,16 @@ app.put("/todos/:id", async (req, res) => {
 // Delete a todo
 
 app.delete("/todos/:id", async (req, res) => {
-    try {
-      const { id } = req.params;
-      const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
-        id,
-      ]);
-      res.json({msg: "Todo was deleted!"})
-    } catch (error) {
-      console.error(error.message);
-    }
-  });
+  try {
+    const { id } = req.params;
+    const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
+      id,
+    ]);
+    res.json({ msg: "Todo was deleted!" });
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
