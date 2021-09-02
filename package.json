@@ -1,0 +1,27 @@
+{
+  "name": "express-restful-api-with-postgresql",
+  "version": "1.0.0",
+  "description": "Building a simple RESTful api using Express.js and interacting with PostgreSQL doing CRUD operations",
+  "main": "server.js",
+  "scripts": {
+    "start": "lsof -i:3000 -t | xargs kill -9 && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rayologist/Express-RESTful-api-with-PostgreSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rayologist/Express-RESTful-api-with-PostgreSQL/issues"
+  },
+  "homepage": "https://github.com/Rayologist/Express-RESTful-api-with-PostgreSQL#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
