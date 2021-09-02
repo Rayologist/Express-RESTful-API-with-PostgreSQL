@@ -11,6 +11,20 @@ app.get("/", (req, res) => {
   });
 });
 
+// Get all todos
+
+app.get("/todos", async (req, res) => {
+  try {
+    const allTodos = await pool.query("SELECT description FROM todo");
+
+    res.json(allTodos.rows);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
