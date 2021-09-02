@@ -40,6 +40,8 @@ CREATE TABLE todo(
 npm start
 ```
 
+7. Use Postman to interact with the API
+
 
 ## Resource
 [Build restful API with PostgreSQL and Express](https://www.youtube.com/watch?v=_Mun4eOOf2Q)
